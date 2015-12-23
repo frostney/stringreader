@@ -1,0 +1,25 @@
+{
+  "name": "stringreader",
+  "version": "1.0.0",
+  "description": "Simple string reader for JavaScript",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frostney/stringreader.git"
+  },
+  "keywords": [
+    "string",
+    "reader",
+    "stringreader",
+    "parser"
+  ],
+  "author": "Johannes Stein",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/frostney/stringreader/issues"
+  },
+  "homepage": "https://github.com/frostney/stringreader#readme"
+}
