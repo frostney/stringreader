@@ -15,10 +15,10 @@ class StringReader {
   }
 
   readUntil(character, omitCharacter, notFoundFn) {
-    var c, counter, i, len, skip;
-    if (omitCharacter == null) {
-      omitCharacter = false;
-    }
+    /* eslint-disable no-constant-condition */
+
+    const omitChar = (omitCharacter == null) ? false : omitCharacter;
+
     while (true) {
       if (this.end()) {
         if (notFoundFn) {
@@ -31,10 +31,11 @@ class StringReader {
           break;
         }
       } else {
-        skip = true;
-        counter = 0;
-        for (i = 0, len = character.length; i < len; i++) {
-          c = character[i];
+        let skip = true;
+        let counter = 0;
+        for (let i = 0, len = character.length; i < len; i++) {
+          const c = character[i];
+
           if (!(this.input[this.currentIndex + counter] !== c)) {
             continue;
           }
@@ -49,14 +50,14 @@ class StringReader {
       this.buffer += this.input[this.currentIndex];
       this.currentIndex++;
     }
-    if (omitCharacter) {
+    if (omitChar) {
       this.currentIndex += character.length;
     }
     return this.buffer;
   }
 
   readLine(notFoundFn) {
-    return readUntil('\n', true, notFoundFn);
+    return this.readUntil('\n', true, notFoundFn);
   }
 
   end() {
