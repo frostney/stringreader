@@ -1,12 +1,12 @@
 class StringReader {
   constructor(input) {
     this.input = input;
-    this.buffer = '';
     this.reset();
   }
 
   reset() {
     this.currentIndex = 0;
+    this.tokens = [];
     this.clearBuffer();
   }
 
@@ -14,11 +14,25 @@ class StringReader {
     this.buffer = '';
   }
 
+  // TODO: Can we get a generator here?
   readUntil(character, omitCharacter, notFoundFn) {
     /* eslint-disable no-constant-condition */
 
+    this.clearBuffer();
+
     const omitChar = (omitCharacter == null) ? false : omitCharacter;
 
+    let counter = 0;
+
+    if (!omitChar) {
+      if (this.input.substr(this.currentIndex, character.length) === character) {
+        this.currentIndex += character.length;
+        this.tokens.push(character);
+        return character;
+      }
+    }
+
+    // Not liking the contant here :'(
     while (true) {
       if (this.end()) {
         if (notFoundFn) {
@@ -26,13 +40,13 @@ class StringReader {
         }
         break;
       }
+
       if (character.length === 1) {
         if (this.input[this.currentIndex] === character) {
           break;
         }
       } else {
         let skip = true;
-        let counter = 0;
         for (let i = 0, len = character.length; i < len; i++) {
           const c = character[i];
 
@@ -50,9 +64,13 @@ class StringReader {
       this.buffer += this.input[this.currentIndex];
       this.currentIndex++;
     }
+
     if (omitChar) {
       this.currentIndex += character.length;
     }
+
+    this.tokens.push(this.buffer);
+
     return this.buffer;
   }
 
