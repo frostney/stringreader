@@ -8,7 +8,7 @@ Simple string reader for JavaScript
 ```javascript
 var StringReader = require('stringreader');
 
-var reader = new StringReader('Split this text by its spaces.');
+var reader = new StringReader('Split this text by spaces.');
 
 while (!reader.end()) {
   console.log(reader.readUntil(' ', true));
