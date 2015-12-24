@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "Simple string reader for JavaScript",
   "main": "lib/index.js",
+  "jsnext:main": "lib/index.es2015.js",
   "scripts": {
     "prebuild": "rimraf lib && rimraf umd",
-    "build": "rollup -c rollup.cjs.config.js && rollup -c rollup.umd.config.js",
+    "build": "rollup -c rollup.es2015.config.js && rollup -c rollup.cjs.config.js && rollup -c rollup.umd.config.js",
     "pretest": "rollup -c rollup.test.config.js",
     "lint": "eslint .",
-    "test": "mocha tmp/test.js"
+    "test": "mocha tmp/test.js",
+    "prepublish": "npm run build"
   },
   "files": [
     "src",
