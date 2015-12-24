@@ -4,7 +4,7 @@
   "description": "Simple string reader for JavaScript",
   "main": "lib/index.js",
   "scripts": {
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf lib && rimraf umd",
     "build": "rollup -c rollup.cjs.config.js && rollup -c rollup.umd.config.js",
     "pretest": "rollup -c rollup.test.config.js",
     "lint": "eslint .",

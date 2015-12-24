@@ -1,6 +1,6 @@
 import config from './rollup.config';
 
 config.format = 'cjs';
-config.dest = 'dist/stringreader.js';
+config.dest = 'lib/index.js';
 
 export default config;
