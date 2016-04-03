@@ -1,6 +1,6 @@
-var StringReader = require('../lib').default;
+import StringReader from '../src';
 
-var reader = new StringReader('Split this text by spaces.');
+const reader = new StringReader('Split this text by spaces.');
 
 while (!reader.end()) {
   console.log(reader.readUntil(' ', true));
